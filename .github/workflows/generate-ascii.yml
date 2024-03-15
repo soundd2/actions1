@@ -12,7 +12,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install cowsay Program
-        run: sudo apt-get install cowsay -y 
+        run: |
+          sudo ap-get update
+          sudo apt-get install cowsay -y 
 
       - name: Execute Cowsay CMD
         run: cowsay -f dragon "Run for cover, I am a DRAGON...RAWR"   >> dragon.txt
@@ -21,7 +23,7 @@ jobs:
         run: grep -i "dragon" dragon.txt
 
       - name: Read File
-        uses: cat dragon.txt 
+        uses:  cat dragon.txt 
 
       - name: Checkout Repo Files
         run: ls -ltra
