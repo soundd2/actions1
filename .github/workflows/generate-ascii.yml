@@ -18,6 +18,11 @@ jobs:
           run: |
             chmod +x ascii-script.sh
             ./ascii-script.sh
+        - name: Upload artifact
+          uses: actions/upload-artifact@v4
+          with:
+              name: dragon-text-file  # Choose a name for your artifact
+              path: dragon.txt 
   
     test_job:
       needs: build_job
@@ -33,6 +38,13 @@ jobs:
           run: |
             chmod +x ascii-script.sh
             ./ascii-script.sh
+
+        - name: Download artifact text file
+          uses: actions/download-artifact@v4
+          with:
+            name: dragon-text-file  # Choose a name for your artifact
+       
+    
   
     Deploy_job:
       needs: [ test_job]
@@ -48,3 +60,8 @@ jobs:
           run: |
             chmod +x ascii-script.sh
             ./ascii-script.sh
+                 
+        - name: Download artifact text file
+          uses: actions/download-artifact@v4
+          with:
+              name: dragon-text-file  # Choose a name for your artifact
