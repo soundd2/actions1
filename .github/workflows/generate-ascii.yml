@@ -5,6 +5,7 @@ on:
 
 jobs:
     build_job:
+    
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
@@ -19,6 +20,7 @@ jobs:
             ./ascii-script.sh
   
     test_job:
+      needs: build_job
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
@@ -33,6 +35,7 @@ jobs:
             ./ascii-script.sh
   
     Deploy_job:
+      needs: [ test_job]
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
