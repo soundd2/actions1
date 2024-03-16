@@ -4,7 +4,7 @@ on:
   push
 
 jobs:
-  ascii-job:
+  build_job:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,3 +18,34 @@ jobs:
         run: |
          chmod +x ascii-script.sh
          ./ascii-script.sh 
+
+   test_job:
+     runs-on: ubuntu-latest
+      
+     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: List Repo Files
+        run: ls -ltra 
+      
+      - name: Execut Shell Script
+        run: |
+          chmod +x ascii-script.sh
+          ./ascii-script.sh 
+
+    Deploy_job:
+       runs-on: ubuntu-latest
+             
+      steps:
+      
+        - name: Checkout code
+          uses: actions/checkout@v2
+             
+        - name: List Repo Files
+          run: ls -ltra 
+             
+        - name: Deploy
+          run: |
+            chmod +x ascii-script.sh
+            ./ascii-script.sh 
