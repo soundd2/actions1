@@ -7,7 +7,7 @@ on:
 
 
 jobs:
-  simple-job:
+  deploy-on-ubuntu:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Docker Details
@@ -15,7 +15,7 @@ jobs:
 
       - name: Run Images
         run: docker run hello-world
-  deploy:
+  deploy-on-windows:
     runs-on: windows-latest
     steps:
       - name: Echo Docker Details
