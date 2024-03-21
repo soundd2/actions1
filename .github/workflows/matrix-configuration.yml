@@ -1,0 +1,25 @@
+name: variables workflow
+
+on:
+  push:
+  workflow_dispatch:
+    # schedule:
+    #   - cron: "*/1 * * * *"
+
+
+jobs:
+  simple-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Docker Details
+        run: docker info
+
+      - name: Run Images
+        run: docker run hello-world
+  deploy:
+    runs-on: windows-latest
+    steps:
+      - name: Echo Docker Details
+        run: docker info
+      - name: Run Images
+        run: docker run hello-world 
