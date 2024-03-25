@@ -1,0 +1,42 @@
+name:  exploring workflow filters and activites 
+
+
+
+on:
+  workflow_dispatch:  # Manually trigger the workflow
+  push:              # Trigger on any push to the repository
+    branches:
+      - main
+      - '!feature/*         # Only for the 'main' branch
+  pull_request:      # Trigger on pull requests
+    types:
+      - opened
+      - synchronize  # Also when pull request is updated
+    path-ignore:
+      - README.md 
+    branches:
+       - main 
+
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+
+    - run: echo this workflow/job/step/ is executed for event type - ${{ github.event_name }}
+
+
+    # steps:
+    #   - name: Checkout code
+    #     uses: actions/checkout@v2
+
+    #   - name: Set up Node.js
+    #     uses: actions/setup-node@v2
+    #     with:
+    #       node-version: '14'
+
+    #   - name: Install dependencies
+    #     run: npm install
+
+    #   - name: Build and test
+    #     run: npm run build && npm test
